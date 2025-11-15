@@ -1,0 +1,297 @@
+:root {
+  --white: #fff;
+  --black: #000;
+  --gray: #bebebe;
+  --dark-red: #5a0000;
+}
+
+/* ====================== */
+/*       ESTRUCTURA       */
+/* ====================== */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: 'Pixelify Sans', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  perspective: 1500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ====================== */
+/*         CANVAS         */
+/* ====================== */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  display: block;
+}
+
+/* ====================== */
+/*         HEADER         */
+/* ====================== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(148, 0, 0, 0.216);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  animation: slideDown 1s ease-out;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 20px 40px rgba(255,255,255,0.3), inset 0 0 15px rgba(255,255,255,0.1);
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.header-logo img {
+  width: 55px;
+  transition: transform 0.3s ease;
+margin-left: 1rem;}
+.header-logo img:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.header-tittle h2 {
+  font-size: 1.6rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid var(--white);
+  animation: typing 3s steps(20, end) forwards, blink-caret 0.8s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--white); }
+}
+
+nav {
+  display: flex;
+  gap: 5rem;
+  margin-right: 1rem;
+}
+nav a {
+  color: var(--gray);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--white);
+  transition: width 0.3s ease;
+}
+nav a:hover::after {
+  width: 100%;
+}
+nav a:hover {
+  color: var(--white);
+  transform: translateY(-4px);
+}
+
+/* ====================== */
+/*          MAIN          */
+/* ====================== */
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  padding: 40px;
+  max-width: 1200px;
+  width: 90%;
+  flex-grow: 1;
+  margin-top: 120px;  /* espacio debajo del header */
+  margin-bottom: 120px; /* espacio encima del footer */
+  z-index: 1;
+  box-sizing: border-box;
+  align-content: start;
+}
+
+/* Tarjetas */
+.tech-div {
+  background: rgba(128,128,128,0.2);
+  border-radius: 20px;
+  text-align: center;
+  padding: 30px 20px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(255,255,255,0.1);
+  transform-style: preserve-3d;
+}
+.tech-div:hover {
+  box-shadow: 0 20px 40px rgba(255,255,255,0.3), inset 0 0 15px rgba(255,255,255,0.1);
+}
+
+/* Iconos */
+.tech-icon {
+  font-size: 3em;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+  z-index: 2;
+  position: relative;
+}
+
+/* Colores íconos */
+.html-div .tech-icon { color: #EC7C26; }
+.css-div .tech-icon { color: #0000ff; }
+.js-div .tech-icon { color: #F0DB4F; }
+.git-div .tech-icon { color: #F05032; }
+.github-div .tech-icon { color: #fff; }
+.php-div .tech-icon { color: #9da2e9; }
+.react-div .tech-icon { color: #00a6ff; }
+.node-div .tech-icon { color: #00FF00; }
+
+/* Texto emergente */
+.base-text {
+  font-size: 1em;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  color: var(--white);
+}
+.tech-title, .tech-desc {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 2;
+}
+.tech-div:hover .base-text {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+.tech-div:hover .tech-title,
+.tech-div:hover .tech-desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+.tech-title {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.tech-desc {
+  font-size: 0.85em;
+  line-height: 1.2em;
+}
+
+/* ====================== */
+/*         FOOTER         */
+/* ====================== */
+footer {
+  position: relative;
+  width: 100%;
+  background: rgba(148, 0, 0, 0.145);
+  text-align: center;
+  font-size: 0.9rem;
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 1s ease-out;
+  border-radius: 20px 20px 0 0;
+  z-index: 100;
+  margin-top: auto; /* empuja el footer hacia abajo */
+  box-shadow: 0 -5px 30px rgba(255,255,255,0.3);
+  width: 900px;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* ====================== */
+/*       RESPONSIVE       */
+/* ====================== */
+/* Tablets (2 columnas, centrado) */
+@media (max-width: 1024px) {
+  main {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-top: 110px;
+    margin-bottom: 100px;
+  }
+}
+
+/* Móviles medianos (1 o 2 columnas) */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+    text-align: center;
+  }
+
+  .header-tittle h2 {
+    font-size: 1.2rem;
+  }
+
+  nav {
+    gap: 1.5rem;
+  }
+
+  main {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin-top: 90px;
+    margin-bottom: 90px;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    padding: 0.6rem;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  main {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 15px;
+    margin-top: 200px;
+    margin-bottom: 80px;
+  }
+
+  .tech-div {
+    padding: 20px 15px;
+  }
+
+  .tech-icon {
+    font-size: 2.5em;
+  }
+
+  .header-tittle h2 {
+    font-size: 1rem;
+  }
+}
