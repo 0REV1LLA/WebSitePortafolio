@@ -116,7 +116,7 @@ header {
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            border: 3px solid var(--black);
+            border: 3px solid var(--white);
             transition: transform 0.8s ease, box-shadow 0.3s ease;
         }
         .profile-photo img:hover {
