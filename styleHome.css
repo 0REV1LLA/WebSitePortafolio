@@ -143,7 +143,7 @@ header {
         .btn-about {
             display: inline-block;
             padding: 0.8rem 2rem;
-            background: #6b6b6beb;
+            background: rgba(36, 36, 36, 0.759);
             color: var(--white);
             border-radius: 8px;
             text-decoration: none;
