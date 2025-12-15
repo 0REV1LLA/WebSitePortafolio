@@ -68,17 +68,3 @@ techDivs.forEach(div => {
     techDivs.forEach(d => d.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)');
   });
 });
-// SCROLLREVEAL
-const scrollRevealOption = {
-  origin: 'right',
-  distance: '50px',
-  duration: 800,
-  easing: 'ease-out',
-  opacity: 0,
-  scale: 0.8
-};
-
-ScrollReveal().reveal('.contentMain', {
-  interval: 400,
-  delay: 400
-});
